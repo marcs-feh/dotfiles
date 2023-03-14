@@ -1,0 +1,32 @@
+color      = "#f4e5bf"
+background = "#1d2021"
+separator  = "#303536"
+
+tag_fg          = "#f4e5bf"
+tag_bg          = "#1d2021"
+tag_focused_fg  = "#303536"
+tag_focused_bg  = "#8ac87d"
+tag_urgent_fg   = "#1d2021"
+tag_urgent_bg   = "#cdaf69"
+tag_inactive_fg = "#f4e5bf"
+tag_inactive_bg = "#1d2021"
+
+font   = "Source Code Pro 10"
+
+height = 20
+margin_top    = 0
+margin_bottom = 0
+margin_left   = 0
+margin_right  = 0
+
+separator_width = 0
+tags_r = 0
+blocks_r = 0
+tags_padding = 12
+blocks_overlap = 0
+command = "i3status-rs"
+position = "top"
+hide_inactive_tags = true
+invert_touchpad_scrolling = true
+show_layout_name = false
+

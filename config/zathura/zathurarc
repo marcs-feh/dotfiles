@@ -1,0 +1,10 @@
+set guioptions  "v"
+set recolor "true"
+
+set default-fg "#F1F1F1"
+set default-bg "#131313"
+
+set recolor-darkcolor "#000000"
+set recolor-lightcolor "#E3D8B8"
+
+set first-page-column 1:1
