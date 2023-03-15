@@ -1,0 +1,4 @@
+sync.sh
+mpd/database
+mpd/log
+*.log

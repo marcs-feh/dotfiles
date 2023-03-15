@@ -1,29 +1,28 @@
 local rv = require 'river'
 
-local bemenu_cmd = "bemenu-run -p 'Launch:' -H 20 --fn 'Source Code Pro 10'"
-do -- bemenu color config
-	local fg = '#f4e5bf'
-	local hi = '#8ac87d'
-	local bg = '#1d2021'
+local term = 'foot'
 
-	-- Careful with the leading space
-	bemenu_cmd = bemenu_cmd .. (" --nf '%s' --nb '%s' af '%s' --ab '%s' tf '%s' --tb '%s' sf '%s' --sb '%s' hf '%s' --hb '%s' ff '%s' --fb '%s' fbf '%s' --fbb '%s' scf '%s' --scb '%s'")
-		:format(fg, bg, -- Normal
-		        fg, bg, -- Alternating
-		        bg, hi, -- Title
-		        bg, fg, -- Selected
-		        hi, bg, -- Highlighted
-		        fg, bg, -- Filter
-		        fg, bg, -- Feedback
-		        fg, bg) -- Scrollbar
-end
+-- Helpers
+local bemenu_cmd = require 'bemenu'.colored_cmd { fg = '#f4e5bf', bg = '#1d2021', hi = '#8ac87d'}
+local termcmd = function(s) return ([[%s -e sh -c '%s']]):format(term, s) end
 
 rv.spawn_cmds = {
 	-- Mod          Key        Command
 	{'Super+Shift', 'B',      'pkill i3bar-river'},
 	{'Super',       'B',      'brave-browser'},
-	{'Super',       'Return', 'foot'},
+	{'Super',       'Return', term},
 	{'Super',       'P',      bemenu_cmd},
+	{'Super',       'T',      termcmd('htop')},
 }
+
+-- Extra commands for riverctl
+rv.riverctl_cmds = {
+	'input pointer-10248-257-MSFT0001:01_2808:0101_Touchpad tap enabled',
+}
+
+-- rv.autostart = {
+-- 	'i3bar-river',
+-- 	'swaybg -i ~/pics/leaves_dark.jpg',
+-- }
 
 rv.apply()

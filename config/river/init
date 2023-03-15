@@ -46,10 +46,10 @@ riverctl map normal Super A send-layout-cmd rivertile "main-count +1"
 riverctl map normal Super D send-layout-cmd rivertile "main-count -1"
 
 # Super+Alt+{H,J,K,L} to move views
-riverctl map normal Super+Alt H move left 100
-riverctl map normal Super+Alt J move down 100
-riverctl map normal Super+Alt K move up 100
-riverctl map normal Super+Alt L move right 100
+riverctl map normal Super+Alt H move left 50
+riverctl map normal Super+Alt J move down 50
+riverctl map normal Super+Alt K move up 50
+riverctl map normal Super+Alt L move right 50
 
 # Super+Alt+Control+{H,J,K,L} to snap views to screen edges
 riverctl map normal Super+Alt+Control H snap left
@@ -149,7 +149,7 @@ riverctl float-filter-add app-id float
 riverctl float-filter-add title "popup title with spaces"
 
 # Set app-ids and titles of views which should use client side decorations
-riverctl csd-filter-add app-id "gedit"
+# riverctl csd-filter-add app-id "gedit"
 
 # Set the default layout generator to be rivertile and start it.
 # River will send the process group of the init executable SIGTERM on exit.

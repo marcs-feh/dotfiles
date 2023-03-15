@@ -16,7 +16,11 @@ icons = "none"
 [[block]]
 block = "battery"
 format = "[$percentage]"
+full_format = "[$percentage]"
+empty_format = "![$percentage]"
 missing_format = ""
+empty_threshold=10
+full_threshold=95
 
 # [[block]]
 # block = "backlight"
