@@ -1,4 +1,4 @@
 sync.sh
-mpd/database
-mpd/log
+config/mpd/database
+config/mpd/log
 *.log
