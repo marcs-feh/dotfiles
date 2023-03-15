@@ -20,6 +20,7 @@ rv.riverctl_cmds = {
 	'input pointer-10248-257-MSFT0001:01_2808:0101_Touchpad tap enabled',
 }
 
+-- Regular commands
 -- rv.autostart = {
 -- 	'i3bar-river',
 -- 	'swaybg -i ~/pics/leaves_dark.jpg',

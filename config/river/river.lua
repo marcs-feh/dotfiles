@@ -9,6 +9,8 @@ string.join = function (self, tbl)
 	return s:sub(1, #s - #self)
 end
 
+M.tags_count = 9
+
 M.riverctl_cmds = {}
 
 M.spawn_cmds = {}
@@ -20,6 +22,7 @@ M.core_bindings = {
 	exit  = {'Super+Shift', 'X'},
 	close = {'Super', 'Q'},
 	zoom  = {'Super', 'S'},
+	toggle_float = {'Super', 'Space'},
 	focus_next = {'Super', 'J'},
 	focus_prev = {'Super', 'K'},
 	swap_next = {'Super+Shift', 'J'},
@@ -40,22 +43,22 @@ M.core_bindings = {
 		toggle_focused  = 'Super+Control',
 		toggle_view_tag = 'Super+Shift+Control',
 	},
+	resize = {
+		mod = 'Super+Alt+Shift',
+		amount = 50,
+		keys = {
+			vertical   = { ['-'] = 'K', ['+'] = 'J'},
+			horizontal = { ['-'] = 'H', ['+'] = 'L'}
+		},
+	},
 	move = {
 		mod = 'Super+Alt',
 		amount = 50,
-		-- Up, Down, Left, Right
-		dir_keys = {'K', 'J', 'H', 'L'},
-	},
-	resize = {
-		mod = 'Super+Alt+Shift',
-		amount = 100,
-		-- Vert-, Vert+, Horiz-, Horiz+
-		dir_keys = {'K', 'J', 'H', 'L'},
+		keys = { up = 'K', down = 'J', left = 'H', right = 'L'},
 	},
 	snap = {
 		mod = 'Super+Alt+Control',
-		-- Up, Down, Left, Right
-		dir_keys = {'K', 'J', 'H', 'L'},
+		keys = {up = 'K', down = 'J', left = 'H', right = 'L'},
 	},
 }
 
@@ -89,6 +92,7 @@ M.apply = function()
 		{b.exit, 'exit'},
 		{b.close, 'close'},
 		{b.zoom, 'zoom'},
+		{b.toggle_float, 'toggle-float'},
 		{b.focus_next, 'focus-view next'},
 		{b.focus_prev, 'focus-view previous'},
 		{b.swap_next, 'swap next'},
@@ -103,16 +107,39 @@ M.apply = function()
 	for _, cmd in ipairs(cmds) do
 		print(('riverctl map normal %s %s'):format(j(cmd[1]), cmd[2]))
 	end
+
+	-- Pointer
 	for _, bind in ipairs(b.pointer)do
 		print(('riverctl map-pointer normal %s'):format(j(bind)))
 	end
+
+	-- Riverctl
 	for _, c in ipairs(M.riverctl_cmds) do
 		print('riverctl ' .. c)
 	end
 
+	-- Move
+	for dir, key in pairs(b.move.keys) do
+		print(('riverctl map normal %s %s move %s %d'):format(b.move.mod, key, dir, b.move.amount))
+	end
+
+	-- Snap
+	for dir, key in pairs(b.snap.keys) do
+		print(('riverctl map normal %s %s snap %s'):format(b.snap.mod, key, dir))
+	end
+
+	-- Resize
+	for dir, _ in pairs(b.resize.keys) do
+		for sign, key in pairs(b.resize.keys.vertical) do
+			print(('riverctl map normal %s %s resize %s %s%d'):format(b.resize.mod, key, dir, sign, b.resize.amount))
+		end
+	end
+
+	-- Autostart programs
 	if #M.autostart > 0 then
 		print((' & \n'):join(M.autostart) .. (' & \n'))
 	end
+
 end
 
 return M
