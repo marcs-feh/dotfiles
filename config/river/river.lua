@@ -22,6 +22,11 @@ M.core_bindings = {
 	exit  = {'Super+Shift', 'X'},
 	close = {'Super', 'Q'},
 	zoom  = {'Super', 'S'},
+	fullscreen = {'Super+Shift', 'F'},
+	set_focused_tags    = 'Super',
+	set_view_tags       = 'Super+Shift',
+	toggle_focused_tags = 'Super+Control',
+	toggle_view_tags    = 'Super+Shift+Control',
 	toggle_float = {'Super', 'Space'},
 	focus_next = {'Super', 'J'},
 	focus_prev = {'Super', 'K'},
@@ -32,9 +37,10 @@ M.core_bindings = {
 	send_out_next = {'Super+Shift', 'Period'},
 	send_out_prev = {'Super+Shift', 'Comma'},
 	show_all = {'Super', '0'},
+	set_all  = {'Super+Shift', '0'},
 	pointer = {
-		{'Super', 'BTN_LEFT', 'move-view'},
-		{'Super', 'BTN_RIGHT', 'resize-view'},
+		{'Super', 'BTN_LEFT',   'move-view'},
+		{'Super', 'BTN_RIGHT',  'resize-view'},
 		{'Super', 'BTN_MIDDLE', 'toggle-float'},
 	},
 	tags = {
@@ -75,24 +81,28 @@ M.rivertile_bindings = {
 }
 
 M.options = {
-	default_layout = 'rivertile',
-	background     = '0x1e1e1e',
-	border_focus   = '0xc4c4c4',
-	border_unfocus = '0x1a1a1a',
+	default_layout   = 'rivertile',
+	background       = '#1e1e1e',
+	border_focused   = '#bab79d',
+	border_unfocused = '#1d2021',
 }
 
 M.apply = function()
+	assert((M.tags_count >= 1) and (M.tags_count <= 9), 'tags_count must be between 1 and 9')
 	for _, p in ipairs(M.spawn_cmds) do
 		print(('riverctl map normal %s %s spawn "%s"'):format(p[1], p[2], p[3]))
 	end
-		--'riverctl map normal'
+
 	local b = M.core_bindings
+	local o = M.options
+
 	local cmds = {
 		-- Text  Cmd
 		{b.exit, 'exit'},
 		{b.close, 'close'},
 		{b.zoom, 'zoom'},
 		{b.toggle_float, 'toggle-float'},
+		{b.fullscreen, 'toggle-fullscreen'},
 		{b.focus_next, 'focus-view next'},
 		{b.focus_prev, 'focus-view previous'},
 		{b.swap_next, 'swap next'},
@@ -102,10 +112,19 @@ M.apply = function()
 		{b.send_out_next, 'send-to-output next'},
 		{b.send_out_prev, 'send-to-output previous'},
 		{b.show_all, 'set-focused-tags '.. tostring(0xffffffff)},
+		{b.set_all, 'set-view-tags '.. tostring(0xffffffff)},
 	}
 	local j = function(t) return (' '):join(t) end
 	for _, cmd in ipairs(cmds) do
 		print(('riverctl map normal %s %s'):format(j(cmd[1]), cmd[2]))
+	end
+
+	-- Tag bindings
+	for i = 1, M.tags_count, 1 do
+		print(('riverctl map normal %s %d set-focused-tags %d'):format(b.set_focused_tags, i, 1 << (i - 1)))
+		print(('riverctl map normal %s %d set-view-tags %d'):format(b.set_view_tags, i, 1 << (i - 1)))
+		print(('riverctl map normal %s %d toggle-focused-tags %d'):format(b.toggle_focused_tags, i, 1 << (i - 1)))
+		print(('riverctl map normal %s %d toggle-view-tags %d'):format(b.toggle_view_tags, i, 1 << (i - 1)))
 	end
 
 	-- Pointer
@@ -130,9 +149,23 @@ M.apply = function()
 
 	-- Resize
 	for dir, _ in pairs(b.resize.keys) do
-		for sign, key in pairs(b.resize.keys.vertical) do
+		for sign, key in pairs(b.resize.keys[dir]) do
 			print(('riverctl map normal %s %s resize %s %s%d'):format(b.resize.mod, key, dir, sign, b.resize.amount))
 		end
+	end
+
+	-- Apply options
+	o.background       = o.background:gsub('#', '0x')
+	o.border_focused   = o.border_focused:gsub('#', '0x')
+	o.border_unfocused = o.border_unfocused:gsub('#', '0x')
+	local opts = {
+		{o.background, 'background-color'},
+		{o.border_focused, 'border-color-focused'},
+		{o.border_unfocused, 'border-color-unfocused'},
+		{o.default_layout, 'default-layout'},
+	}
+	for _, opt in pairs(opts) do
+		print(('riverctl %s %s'):format(opt[2], opt[1]))
 	end
 
 	-- Autostart programs
