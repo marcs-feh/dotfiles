@@ -168,6 +168,13 @@ M.apply = function()
 		print(('riverctl %s %s'):format(opt[2], opt[1]))
 	end
 
+	if M.options.default_layout == 'rivertile' then
+		for _, opt in ipairs(M.rivertile_bindings) do
+			print(('riverctl map normal %s %s send-layout-cmd rivertile "%s"'):format(opt[1], opt[2], opt[3]))
+		end
+
+	end
+
 	-- Autostart programs
 	if #M.autostart > 0 then
 		print((' & \n'):join(M.autostart) .. (' & \n'))
