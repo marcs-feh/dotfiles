@@ -10,82 +10,12 @@ string.join = function (self, tbl)
 end
 
 M.tags_count = 9
-
 M.riverctl_cmds = {}
-
 M.spawn_cmds = {}
-
 M.autostart = {}
-
--- Bindings for the standard behavior
-M.core_bindings = {
-	exit  = {'Super+Shift', 'X'},
-	close = {'Super', 'Q'},
-	zoom  = {'Super', 'S'},
-	fullscreen = {'Super+Shift', 'F'},
-	set_focused_tags    = 'Super',
-	set_view_tags       = 'Super+Shift',
-	toggle_focused_tags = 'Super+Control',
-	toggle_view_tags    = 'Super+Shift+Control',
-	toggle_float = {'Super', 'Space'},
-	focus_next = {'Super', 'J'},
-	focus_prev = {'Super', 'K'},
-	swap_next = {'Super+Shift', 'J'},
-	swap_prev = {'Super+Shift', 'k'},
-	focus_out_next = {'Super', 'Period'},
-	focus_out_prev = {'Super', 'Comma'},
-	send_out_next = {'Super+Shift', 'Period'},
-	send_out_prev = {'Super+Shift', 'Comma'},
-	show_all = {'Super', '0'},
-	set_all  = {'Super+Shift', '0'},
-	pointer = {
-		{'Super', 'BTN_LEFT',   'move-view'},
-		{'Super', 'BTN_RIGHT',  'resize-view'},
-		{'Super', 'BTN_MIDDLE', 'toggle-float'},
-	},
-	tags = {
-		set_focus       = 'Super',
-		set_view_tag    = 'Super+Shift',
-		toggle_focused  = 'Super+Control',
-		toggle_view_tag = 'Super+Shift+Control',
-	},
-	resize = {
-		mod = 'Super+Alt+Shift',
-		amount = 50,
-		keys = {
-			vertical   = { ['-'] = 'K', ['+'] = 'J'},
-			horizontal = { ['-'] = 'H', ['+'] = 'L'}
-		},
-	},
-	move = {
-		mod = 'Super+Alt',
-		amount = 50,
-		keys = { up = 'K', down = 'J', left = 'H', right = 'L'},
-	},
-	snap = {
-		mod = 'Super+Alt+Control',
-		keys = {up = 'K', down = 'J', left = 'H', right = 'L'},
-	},
-}
-
-M.rivertile_bindings = {
-	-- Mod    Key      Command
-	{'Super', 'Up',    'main-location top'},
-	{'Super', 'Down',  'main-location bottom'},
-	{'Super', 'Left',  'main-location left'},
-	{'Super', 'Right', 'main-location right'},
-	{'Super', 'L',     'main-ratio +0.05'},
-	{'Super', 'H',     'main-ratio -0.05'},
-	{'Super', 'A',     'main-count +1'},
-	{'Super', 'D',     'main-count -1'},
-}
-
-M.options = {
-	default_layout   = 'rivertile',
-	background       = '#1e1e1e',
-	border_focused   = '#bab79d',
-	border_unfocused = '#1d2021',
-}
+M.core_bindings = {}
+M.rivertile_bindings = {}
+M.options = {}
 
 M.apply = function()
 	assert((M.tags_count >= 1) and (M.tags_count <= 9), 'tags_count must be between 1 and 9')
