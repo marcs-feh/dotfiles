@@ -2,4 +2,4 @@ sync.sh
 config/mpd/database
 config/mpd/log
 *.log
-*[0-9]+~
+*~
