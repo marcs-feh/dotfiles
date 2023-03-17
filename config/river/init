@@ -3,6 +3,12 @@
 cd "$HOME/.config/river"
 lua init.lua | sh
 
+# Declare a passthrough mode. This mode has only a single mapping to return to
+# normal mode. This makes it useful for testing a nested wayland compositor
+riverctl declare-mode passthrough
+riverctl map normal Super F11 enter-mode passthrough
+riverctl map passthrough Super F11 enter-mode normal
+
 # # Spawn programs
 # riverctl map normal Super Return spawn foot
 # riverctl map normal Super B      spawn brave-browser
@@ -103,15 +109,6 @@ lua init.lua | sh
 # # Super+F to toggle fullscreen
 # riverctl map normal Super F toggle-fullscreen
 #
-# # Declare a passthrough mode. This mode has only a single mapping to return to
-# # normal mode. This makes it useful for testing a nested wayland compositor
-# riverctl declare-mode passthrough
-#
-# # Super+F11 to enter passthrough mode
-# riverctl map normal Super F11 enter-mode passthrough
-#
-# # Super+F11 to return to normal mode
-# riverctl map passthrough Super F11 enter-mode normal
 #
 # # Various media key mapping examples for both normal and locked mode which do
 # # not have a modifier
@@ -122,7 +119,7 @@ lua init.lua | sh
 #     # Control pulse audio volume with pamixer (https://github.com/cdemoulins/pamixer)
 #     riverctl map $mode None XF86AudioRaiseVolume  spawn 'volume up  5'
 #     riverctl map $mode None XF86AudioLowerVolume  spawn 'volume dwn 5'
-#     riverctl map $mode None XF86AudioMute         spawn 'pamixer --toggle-mute'
+#     riverctl map $mode None XF86AudioMute         spawn 'volume mute'
 #
 #     # Control MPRIS aware media players with playerctl (https://github.com/altdesktop/playerctl)
 #     riverctl map $mode None XF86AudioMedia spawn 'playerctl play-pause'

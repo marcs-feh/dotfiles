@@ -16,12 +16,11 @@ export CXX=clang++
 export IMAGE_VIEWER='nomacs'
 export VIDEO_PLAYER='mpv'
 export DOC_VIEWER='zathura'
-hi='#8ac87d' bg='#1d2021' fg='#f4e5bf';
-export BEMENU_COLORS="--nf '$fg' --nb '$bg' --af '$fg' --ab '$bg' --tf '$bg' --tb '$hi' --sf '$bg' --sb '$fg' --hf '$hi' --hb '$bg' --ff '$fg' --fb '$bg' --fbf '$fg' --fbb '$bg' --scf '$fg' --scb '$bg'"
 
+local hi='#8ac87d' bg='#1d2021' fg='#f4e5bf';
+export BEMENU_COLORS="--nf '$fg' --nb '$bg' --af '$fg' --ab '$bg' --tf '$bg' --tb '$hi' --sf '$bg' --sb '$fg' --hf '$hi' --hb '$bg' --ff '$fg' --fb '$bg' --fbf '$fg' --fbb '$bg' --scf '$fg' --scb '$bg'";
 
 # App configs
-export MENU=''
 export NNN_PLUG='j:jump;i:imgview;p:pdfview'
 export FZF_DEFAULT_OPTS='--height=30% --info=default --color=16 --layout=reverse --no-bold'
 export EXINIT=':set tabstop=2 autoindent ignorecase'
@@ -36,14 +35,13 @@ export DEBUGINFOD_URLS=$(cat /etc/debuginfod/archlinux.urls)
 # ash requires ENV to be exported
 [ "$SHELL" = "/bin/ash" ] && export ENV="$HOME/.ashrc"
 
-# Ask user wheather or not to start X server
-tput clear
+# Ask user wheather or not to start GUI
+# tput clear
 printf "== \033[0;32m$(date +'%b %d(%a) %H:%M')\033[0m ==\n"
 printf "Welcome back, \033[0;36m$USER\033[0;m\n"
 printf 'Start GUI (Y/n) '
 read init_gui
 if [ -z "$init_gui" ] || [ "$init_gui" = "y" ]; then
 	river
-	# startx
 fi
 

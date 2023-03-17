@@ -19,6 +19,7 @@ rv.spawn_cmds = {
 rv.riverctl_cmds = {
 	'input pointer-10248-257-MSFT0001:01_2808:0101_Touchpad tap enabled',
 	'keyboard-layout -options caps:swapescape us',
+	'rule-add ssd -app-id "*zathura*"',
 }
 
 -- Regular commands
@@ -26,6 +27,7 @@ rv.autostart = {
 	'i3bar-river',
 	'swaybg -i ~/pics/leaves_dark.jpg',
 	'rivertile -outer-padding 2 -view-padding 0',
+-- 'riverctl rule-add ssd -app-id "*zathura*"',
 }
 
 rv.apply()
