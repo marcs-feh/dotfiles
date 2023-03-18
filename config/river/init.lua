@@ -1,15 +1,15 @@
 #!/usr/bin/env lua
 
 local rv = require 'river'
-local term = 'foot'
 
--- Helpers
+local term = 'foot'
+local browser = 'brave-browser'
 local termcmd = function(s) return ([[%s -e sh -c '%s']]):format(term, s) end
 
 rv.spawn_cmds = {
 	-- Mod          Key        Command
 	{'Super+Shift', 'B',      'pkill i3bar-river'},
-	{'Super',       'B',      'brave-browser'},
+	{'Super',       'B',      browser},
 	{'Super',       'Return', term},
 	{'Super',       'P',      'bemenu-run -H 20 -p "Launch:" $BEMENU_COLORS'},
 	{'Super',       'T',      termcmd('htop')},

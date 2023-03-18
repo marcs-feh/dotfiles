@@ -7,6 +7,8 @@ PS1="$ "
 export PATH="$PATH:$HOME/.scripts/:$HOME/.local/bin/:$HOME/.cargo/bin/"
 export GOPATH="$HOME/.local/share/go/"
 
+export XDG_CURRENT_DESKTOP='sway' # Soy-powered apps sometimes require this.
+
 # Apps
 export VISUAL='nvim'
 export EDITOR='nvim'
@@ -18,7 +20,7 @@ export VIDEO_PLAYER='mpv'
 export DOC_VIEWER='zathura'
 
 local hi='#8ac87d' bg='#1d2021' fg='#f4e5bf';
-export BEMENU_COLORS="--nf '$fg' --nb '$bg' --af '$fg' --ab '$bg' --tf '$bg' --tb '$hi' --sf '$bg' --sb '$fg' --hf '$hi' --hb '$bg' --ff '$fg' --fb '$bg' --fbf '$fg' --fbb '$bg' --scf '$fg' --scb '$bg'";
+export BEMENU_OPTS="-i -H 20 --nf '$fg' --nb '$bg' --af '$fg' --ab '$bg' --tf '$bg' --tb '$hi' --sf '$bg' --sb '$fg' --hf '$hi' --hb '$bg' --ff '$fg' --fb '$bg' --fbf '$fg' --fbb '$bg' --scf '$fg' --scb '$bg'"
 
 # App configs
 export NNN_PLUG='j:jump;i:imgview;p:pdfview'
