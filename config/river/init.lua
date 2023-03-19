@@ -15,6 +15,13 @@ rv.spawn_cmds = {
 	{'Super',       'T',      termcmd('htop')},
 	{'Super+Shift', 'L',      'swaylock'},
 	{'Super+Shift', 'B',      '~/.config/i3bar-river/toggle.sh'},
+	-- Volume control
+	{'None', 'XF86AudioRaiseVolume', 'volume up 5',  rep = true},
+	{'None', 'XF86AudioLowerVolume', 'volume dwn 5', rep = true},
+	{'None', 'XF86AudioMute',        'volume mute',  rep = true},
+	-- Brightness control
+	{'None', 'XF86MonBrightnessUp',   'doas brightness inc 0.05', rep = true},
+	{'None', 'XF86MonBrightnessDown', 'doas brightness dec 0.05', rep = true},
 }
 
 -- Regular commands
@@ -29,6 +36,11 @@ rv.riverctl_cmds = {
 	'input pointer-10248-257-MSFT0001:01_2808:0101_Touchpad tap enabled',
 	'keyboard-layout -options caps:swapescape us',
 	'rule-add ssd -app-id "*"',
+	-- Declare a passthrough mode. This mode has only a single mapping to return to
+	-- normal mode. This makes it useful for testing a nested wayland compositor
+	'declare-mode passthrough',
+	'map normal Super F11 enter-mode passthrough',
+	'map passthrough Super F11 enter-mode normal',
 }
 
 -- Bindings for River's core functions

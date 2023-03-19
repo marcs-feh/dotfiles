@@ -20,7 +20,8 @@ M.options = {}
 M.apply = function()
 	assert((M.tags_count >= 1) and (M.tags_count <= 9), 'tags_count must be between 1 and 9')
 	for _, p in ipairs(M.spawn_cmds) do
-		print(('riverctl map normal %s %s spawn "%s"'):format(p[1], p[2], p[3]))
+		local rep = p.rep and '-repeat' or ''
+		print(('riverctl map %s normal %s %s spawn "%s"'):format(rep, p[1], p[2], p[3]))
 	end
 
 	local b = M.core_bindings
