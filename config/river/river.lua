@@ -27,26 +27,27 @@ M.apply = function()
 	local o = M.options
 
 	local cmds = {
-		-- Text  Cmd
-		{b.exit, 'exit'},
-		{b.close, 'close'},
-		{b.zoom, 'zoom'},
-		{b.toggle_float, 'toggle-float'},
-		{b.fullscreen, 'toggle-fullscreen'},
-		{b.focus_next, 'focus-view next'},
-		{b.focus_prev, 'focus-view previous'},
-		{b.swap_next, 'swap next'},
-		{b.swap_prev, 'swap previous'},
-		{b.focus_out_next, 'focus-output next'},
-		{b.focus_out_prev, 'focus-output previous'},
-		{b.send_out_next, 'send-to-output next'},
-		{b.send_out_prev, 'send-to-output previous'},
+		-- Text  Cmd     Repeat?
+		{b.exit, 'exit', b.exit.rep},
+		{b.close, 'close', b.close.rep},
+		{b.zoom, 'zoom', b.zoom.rep},
+		{b.toggle_float, 'toggle-float', b.toggle_float.rep},
+		{b.fullscreen, 'toggle-fullscreen', b.fullscreen.rep},
+		{b.focus_next, 'focus-view next', b.focus_next.rep},
+		{b.focus_prev, 'focus-view previous', b.focus_prev.rep},
+		{b.swap_next, 'swap next', b.swap_next.rep},
+		{b.swap_prev, 'swap previous', b.swap_prev.rep},
+		{b.focus_out_next, 'focus-output next', b.focus_out_next.rep},
+		{b.focus_out_prev, 'focus-output previous', b.focus_out_prev.rep},
+		{b.send_out_next, 'send-to-output next', b.send_out_next.rep},
+		{b.send_out_prev, 'send-to-output previous', b.send_out_prev.rep},
 		{b.show_all, 'set-focused-tags '.. tostring(0xffffffff)},
 		{b.set_all, 'set-view-tags '.. tostring(0xffffffff)},
 	}
 	local j = function(t) return (' '):join(t) end
 	for _, cmd in ipairs(cmds) do
-		print(('riverctl map normal %s %s'):format(j(cmd[1]), cmd[2]))
+		local rep = cmd[3] and '-repeat' or ''
+		print(('riverctl map %s normal %s %s'):format(rep, j(cmd[1]), cmd[2]))
 	end
 
 	-- Tag bindings
@@ -100,9 +101,9 @@ M.apply = function()
 
 	if M.options.default_layout == 'rivertile' then
 		for _, opt in ipairs(M.rivertile_bindings) do
-			print(('riverctl map normal %s %s send-layout-cmd rivertile "%s"'):format(opt[1], opt[2], opt[3]))
+			local rep = opt.rep and '-repeat' or ''
+			print(('riverctl map %s normal %s %s send-layout-cmd rivertile "%s"'):format(rep, opt[1], opt[2], opt[3]))
 		end
-
 	end
 
 	-- Autostart programs

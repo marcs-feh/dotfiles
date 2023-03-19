@@ -14,6 +14,7 @@ rv.spawn_cmds = {
 	{'Super',       'P',      'bemenu-run -H 20 -p "Launch:" $BEMENU_COLORS'},
 	{'Super',       'T',      termcmd('htop')},
 	{'Super+Shift', 'L',      'swaylock'},
+	{'Super+Shift', 'B',      '~/.config/i3bar-river/toggle.sh'},
 }
 
 -- Regular commands
@@ -41,10 +42,10 @@ rv.core_bindings = {
 	toggle_focused_tags = 'Super+Control',
 	toggle_view_tags    = 'Super+Shift+Control',
 	toggle_float = {'Super', 'Space'},
-	focus_next = {'Super', 'J'},
-	focus_prev = {'Super', 'K'},
-	swap_next = {'Super+Shift', 'J'},
-	swap_prev = {'Super+Shift', 'k'},
+	focus_next = {'Super', 'J', rep = true},
+	focus_prev = {'Super', 'K', rep = true},
+	swap_next = {'Super+Shift', 'J', rep = true},
+	swap_prev = {'Super+Shift', 'k', rep = true},
 	focus_out_next = {'Super', 'Period'},
 	focus_out_prev = {'Super', 'Comma'},
 	send_out_next = {'Super+Shift', 'Period'},
@@ -87,8 +88,8 @@ rv.rivertile_bindings = {
 	{'Super', 'Down',  'main-location bottom'},
 	{'Super', 'Left',  'main-location left'},
 	{'Super', 'Right', 'main-location right'},
-	{'Super', 'L',     'main-ratio +0.05'},
-	{'Super', 'H',     'main-ratio -0.05'},
+	{'Super', 'L',     'main-ratio +0.05', rep = true},
+	{'Super', 'H',     'main-ratio -0.05', rep = true},
 	{'Super', 'A',     'main-count +1'},
 	{'Super', 'D',     'main-count -1'},
 }
