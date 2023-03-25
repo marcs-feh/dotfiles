@@ -1,7 +1,5 @@
 live_config_reload: true
-
-# env:
-#   TERM: xterm-256color
+draw_bold_text_with_bright_colors: false
 
 window:
   dimensions:
@@ -11,7 +9,8 @@ window:
     x: 0
     y: 0
   opacity: 0.90
-  dynamic_title: true
+  title: Terminal
+  dynamic_title: false
   dynamic_padding: true
 
 scrolling:
@@ -19,33 +18,33 @@ scrolling:
 
 font:
   normal:
-    family: JetBrains Mono
+    family: JetBrains Mono NL
     style: Regular
-  size: 11.0
+  size: 12.0
   builtin_box_drawing: false
 
 colors:
   primary:
-    background: '#1e1e1e'
-    foreground: '#d4d4d4'
+    foreground: '#f4e5bf'
+    background: '#1d2021'
   normal:
-    black:   '#2f2f2f'
-    red:     '#dd3838'
-    green:   '#7c9b43'
-    yellow:  '#edb335'
-    blue:    '#5197d0'
-    cyan:    '#4ec9a7'
-    magenta: '#d073c9'
-    white:   '#dcdcdc'
+    black:    '#303536'
+    red:      '#d83e33'
+    green:    '#8ac87d'
+    yellow:   '#f2ba41'
+    blue:     '#81aece'
+    cyan:     '#7ec9b1'
+    magenta:  '#cda2e3'
+    white:    '#fcf8ee'
   bright:
-    black:   '#4c4c4c'
-    red:     '#ef7f70'
-    green:   '#b0ce8c'
-    yellow:  '#dfd27f'
-    blue:    '#65bceb'
-    cyan:    '#89decd'
-    magenta: '#c586c0'
-    white:   '#f3f3f3'
+    black:    '#303536'
+    red:      '#d83e33'
+    green:    '#8ac87d'
+    yellow:   '#f2ba41'
+    blue:     '#81aece'
+    cyan:     '#7ec9b1'
+    magenta:  '#cda2e3'
+    white:    '#fcf8ee'
 
 cursor:
   style:
@@ -57,3 +56,6 @@ cursor:
 mouse:
   double_click: { threshold: 300 }
   triple_click: { threshold: 300 }
+
+key_bindings:
+  - { key: N,              mods: Shift|Control,          action: SpawnNewInstance      }

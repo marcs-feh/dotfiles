@@ -13,11 +13,11 @@ export XDG_CURRENT_DESKTOP='sway' # Soy-powered apps sometimes require this.
 export VISUAL='nvim'
 export EDITOR='nvim'
 export WEB_BROWSER='firefox'
-export CC=clang
-export CXX=clang++
-export IMAGE_VIEWER='nomacs'
+export IMAGE_VIEWER='gwenview'
 export VIDEO_PLAYER='mpv'
 export DOC_VIEWER='zathura'
+export CC='clang'
+export CXX='clang++'
 
 local hi='#8ac87d' bg='#1d2021' fg='#f4e5bf';
 export BEMENU_OPTS="-i -H 20 --nf '$fg' --nb '$bg' --af '$fg' --ab '$bg' --tf '$bg' --tb '$hi' --sf '$bg' --sb '$fg' --hf '$hi' --hb '$bg' --ff '$fg' --fb '$bg' --fbf '$fg' --fbb '$bg' --scf '$fg' --scb '$bg'"

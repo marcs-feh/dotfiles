@@ -19,6 +19,8 @@ PS1="┌┄ %F{green}%m%f • %~"$'\n'"╰> "
 # Use vi mode
 set -o vi
 
+swallow=$()
+
 # General aliases
 alias 'ls'='ls --color'
 alias 'la'='ls --color -A'
@@ -67,4 +69,19 @@ bindkey -M menuselect 'h' vi-backward-char
 bindkey -M menuselect 'k' vi-up-line-or-history
 bindkey -M menuselect 'l' vi-forward-char
 bindkey -M menuselect 'j' vi-down-line-or-history
+
+
+# OSC-7 working dir support 
+function osc7 {
+	local LC_ALL=C
+	export LC_ALL
+
+	setopt localoptions extendedglob
+	input=( ${(s::)PWD} )
+	uri=${(j::)input/(#b)([^A-Za-z0-9_.\!~*\'\(\)-\/])/%${(l:2::0:)$(([##16]#match))}}
+	print -n "\e]7;file://${HOSTNAME}${uri}\e\\"
+}
+
+autoload -Uz add-zsh-hook
+add-zsh-hook -Uz chpwd osc7
 

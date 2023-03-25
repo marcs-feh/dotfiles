@@ -13,6 +13,7 @@ rv.spawn_cmds = {
 	{'Super',       'Return', term},
 	{'Super',       'P',      'bemenu-run -H 20 -p "Launch:" $BEMENU_COLORS'},
 	{'Super',       'T',      termcmd('htop')},
+	{'Super',       'V',      'open_book'},
 	{'Super+Shift', 'L',      'swaylock'},
 	{'Super+Shift', 'B',      '~/.config/i3bar-river/toggle.sh'},
 	-- Volume control
