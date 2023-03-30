@@ -7,6 +7,14 @@ theme = "native"
 [icons]
 icons = "none"
 
+[[block]]
+block = "keyboard_layout"
+driver = "sway"
+format = "$layout"
+[block.mappings]
+"English (US)" = "EN"
+"Portuguese (Brazil)" = "BR"
+
 # Memory
 # [[block]]
 # block = "memory"
@@ -19,13 +27,8 @@ format = "[$percentage]"
 full_format = "[$percentage]"
 empty_format = "![$percentage]"
 missing_format = ""
-empty_threshold=10
-full_threshold=95
-
-# [[block]]
-# block = "backlight"
-# device = "/sys/class/backlight/intel_backlight"
-# format = "* $brightness"
+empty_threshold = 10
+full_threshold = 95
 
 # Sound
 [[block]]
@@ -44,3 +47,4 @@ cmd    = "pavucontrol-qt"
 block = "time"
 interval = 5
 format = "$timestamp.datetime(f:'%b %d(%a) %H:%M') "
+

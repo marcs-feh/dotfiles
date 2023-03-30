@@ -21,6 +21,7 @@ bindsym --no-repeat $mod+Shift+p exec bemenu-run
 bindsym --no-repeat $mod+b exec $web_browser
 bindsym --no-repeat $mod+Shift+t exec $term -e htop
 bindsym --no-repeat $mod+v exec open_book
+bindsym --no-repeat $mod+Shift+Tab exec switchkb-sway
 
 # Volume control
 bindsym XF86AudioRaiseVolume exec 'volume up'
@@ -43,8 +44,6 @@ input "10248:257:MSFT0001:01_2808:0101_Touchpad" {
 input "type:keyboard" {
 	xkb_layout us,br
 	xkb_options caps:swapescape
-
-	# xkb_layout us,rs(latinunicode),rs
 }
 
 
