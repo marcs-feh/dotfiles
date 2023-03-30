@@ -1,0 +1,15 @@
+#!/bin/sh
+
+# Selects between dmenu and bemenu
+
+menu="echo 'no menu selected'"
+
+if [ ! -z "$WAYLAND_DISPLAY" ]; then
+	menu="fuzzel -d -w 60"
+elif [ "$DISPLAY" ]; then
+	menu="dmenu"
+else
+	menu="bemenu -i"
+fi
+
+$menu $@

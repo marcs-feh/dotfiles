@@ -1,5 +1,5 @@
-icons_format = "{icon}"
-invert_scrolling = true
+icons_format     = "{icon}"
+invert_scrolling = false
 
 [theme]
 theme = "native"

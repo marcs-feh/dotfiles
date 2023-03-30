@@ -3,14 +3,3 @@
 cd "$HOME/.config/river"
 lua init.lua | sh
 
-# Declare a passthrough mode. This mode has only a single mapping to return to
-# normal mode. This makes it useful for testing a nested wayland compositor
-riverctl declare-mode passthrough
-riverctl map normal Super F11 enter-mode passthrough
-riverctl map passthrough Super F11 enter-mode normal
-
-# for mode in normal locked; do
-#     # Control screen backlight brightness with light (https://github.com/haikarainen/light)
-#     riverctl map $mode None XF86MonBrightnessUp   spawn 'light -A 5'
-#     riverctl map $mode None XF86MonBrightnessDown spawn 'light -U 5'
-# done

@@ -21,8 +21,8 @@ rv.spawn_cmds = {
 	{'None', 'XF86AudioLowerVolume', 'volume dwn 5', rep = true},
 	{'None', 'XF86AudioMute',        'volume mute',  rep = true},
 	-- Brightness control
-	{'None', 'XF86MonBrightnessUp',   'doas brightness inc 0.05', rep = true},
-	{'None', 'XF86MonBrightnessDown', 'doas brightness dec 0.05', rep = true},
+	{'None', 'XF86MonBrightnessUp',   'doas brightness inc 0.05'},
+	{'None', 'XF86MonBrightnessDown', 'doas brightness dec 0.05'},
 }
 
 -- Regular commands

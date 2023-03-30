@@ -44,6 +44,6 @@ printf "Welcome back, \033[0;36m$USER\033[0;m\n"
 printf 'Start GUI (Y/n) '
 read init_gui
 if [ -z "$init_gui" ] || [ "$init_gui" = "y" ]; then
-	river
+	sway
 fi
 

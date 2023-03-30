@@ -7,55 +7,56 @@ set $left  h
 set $down  j
 set $up    k
 set $right l
-# Your preferred terminal emulator
+
+set $web_browser brave-browser
 set $term alacritty
-# Your preferred application launcher
-# Note: pass the final command to swaymsg so that the resulting window can be opened
-# on the original workspace that the command was run on.
-set $menu bemenu-run
-set $web_browser brave
+set $menu fuzzel
+
+bindsym $mod+q kill
+
+# Start programs
+bindsym --no-repeat $mod+Return exec $term
+bindsym --no-repeat $mod+p exec $menu
+bindsym --no-repeat $mod+Shift+p exec bemenu-run
+bindsym --no-repeat $mod+b exec $web_browser
+bindsym --no-repeat $mod+Shift+t exec $term -e htop
+bindsym --no-repeat $mod+v exec open_book
+
+# Volume control
+bindsym XF86AudioRaiseVolume exec 'volume up'
+bindsym XF86AudioLowerVolume exec 'volume dwn'
+bindsym XF86AudioMute        exec 'volume mute'
+
+# Brightness control
+bindsym XF86MonBrightnessUp exec 'doas brightness inc 0.05'
+bindsym XF86MonBrightnessDown exec 'doas brightness dec 0.05'
 
 exec swaybg -i ~/pics/leaves_dark.jpg
 
-### Output configuration
-#
-#
-# Example configuration:
-#
-#   output HDMI-A-1 resolution 1920x1080 position 1920,0
-#
-# You can get the names of your outputs by running: swaymsg -t get_outputs
-
-### Idle configuration
-#
-# Example configuration:
-#
-# exec swayidle -w \
-# 		  timeout 300 'swaylock -f' \
-# 		  timeout 600 'swaymsg "output * power off"' resume 'swaymsg "output * power on"' \
-# 		  before-sleep 'swaylock -f'
-#
-# This will lock your screen after 300 seconds of inactivity, then turn off
-# your displays after another 300 seconds, and turn your screens back on when
-# resumed. It will also lock your screen before your computer goes to sleep.
-
 input "10248:257:MSFT0001:01_2808:0101_Touchpad" {
 	dwt enabled
-		tap enabled
-		natural_scroll disabled
-		middle_emulation enabled
+	tap enabled
+	natural_scroll   disabled
+	middle_emulation enabled
 }
 
 input "type:keyboard" {
-	xkb_layout us
-		xkb_options caps:swapescape
+	xkb_layout us,br
+	xkb_options caps:swapescape
+
+	# xkb_layout us,rs(latinunicode),rs
 }
 
-# Start a terminal
-bindsym $mod+Return exec $term
-bindsym $mod+p exec $menu
-bindsym $mod+b exec $web_browser
-bindsym $mod+q kill
+
+# Idle configuration
+exec swayidle -w \
+		  timeout 300 'swaylock -f' \
+		  timeout 600 'swaymsg "output * power off"' resume 'swaymsg "output * power on"' \
+		  before-sleep 'swaylock -f'
+
+# This will lock your screen after 300 seconds of inactivity, then turn off
+# your displays after another 300 seconds, and turn your screens back on when
+# resumed. It will also lock your screen before your computer goes to sleep.
 
 # Drag floating windows by holding down $mod and left mouse button.
 # Resize them with right mouse button + $mod.
@@ -85,10 +86,12 @@ bindsym $mod+Up    focus up
 bindsym $mod+Right focus right
 
 # Move the focused window with the same, but add Shift
-bindsym $mod+Shift+$left  move left
-bindsym $mod+Shift+$down  move down
-bindsym $mod+Shift+$up    move up
-bindsym $mod+Shift+$right move right
+
+set $move_amount 50
+bindsym $mod+Shift+$left  move left  50
+bindsym $mod+Shift+$down  move down  50
+bindsym $mod+Shift+$up    move up    50
+bindsym $mod+Shift+$right move right 50
 # Ditto, with arrow keys
 bindsym $mod+Shift+Left   move left
 bindsym $mod+Shift+Down   move down
@@ -129,16 +132,17 @@ bindsym $mod+Shift+0 move container to workspace number 10
 # You can "split" the current object of your focus with
 # $mod+b or $mod+v, for horizontal and vertical splits
 # respectively.
-bindsym $mod+s splith
-bindsym $mod+v splitv
+bindsym $mod+d split horizontal
+bindsym $mod+f split vertical
 
 # Switch the current container between different layout styles
 bindsym $mod+r layout stacking
 bindsym $mod+t layout tabbed
 bindsym $mod+e layout toggle split
+bindsym $mod+Shift+e split none
 
 # Make the current focus fullscreen
-bindsym $mod+f fullscreen
+bindsym $mod+Shift+f fullscreen
 
 # Toggle the current focus between tiling and floating mode
 bindsym $mod+Shift+space floating toggle
@@ -148,17 +152,19 @@ bindsym $mod+space focus mode_toggle
 
 # Move focus to the parent container
 bindsym $mod+a focus parent
-bindsym $mod+d focus child
+bindsym $mod+s focus child
 
 # Alt tabbing
 bindsym Mod1+Tab focus next
 bindsym Mod1+Shift+Tab focus next
 
 # Resizing without a dedicated mode.
-bindsym $mod+Ctrl+$left  resize shrink width  30px
+set $resize_amount 30px
+bindsym $mod+Ctrl+$left  resize shrink width  $resize_amount
 bindsym $mod+Ctrl+$down  resize grow height   30px
 bindsym $mod+Ctrl+$up    resize shrink height 30px
 bindsym $mod+Ctrl+$right resize grow width    30px
+
 #
 # Scratchpad:
 #
@@ -171,34 +177,19 @@ bindsym $mod+Shift+minus move scratchpad
 # Show the next scratchpad window or hide the focused scratchpad window.
 # If there are multiple scratchpad windows, this command cycles through them.
 bindsym $mod+minus scratchpad show
-#
-# Resizing containers:
-#
-mode "resize" {
-	bindsym $left  resize shrink width 10px
-		bindsym $down  resize grow height 10px
-		bindsym $up    resize shrink height 10px
-		bindsym $right resize grow width 10px
-		bindsym Left  resize shrink width 10px
-		bindsym Down  resize grow height 10px
-		bindsym Up    resize shrink height 10px
-		bindsym Right resize grow width 10px
-		bindsym Return mode "default"
-		bindsym Escape mode "default"
-}
-
-bindsym $mod+Shift+r mode "resize"
 
 # Appearance
-# Element               Border     Bg         Text
-client.focused          #1d2021ff  #303536ff  #c4dc9bff
-client.unfocused        #1d2021ff  #1d2021ff  #606a6cff
+# Element               Border     Bg         Text       Indicator  Child Border
+client.focused          #1d2021ff  #303536ff  #c4dc9bff  #c4dc9bc0
+client.unfocused        #1d2021ff  #1d2021ff  #606a6cff  
 client.focused_inactive #1d2021ff  #1d2021ff  #606a6cff
 
 # Status Bar:
 # Read `man 5 sway-bar` for more information about this section.
 bar {
 	position bottom
+	height 21
+	font Source Code Pro 10
 	status_command i3status-rs
 		colors {
 			statusline #f4e5bfff
@@ -209,4 +200,19 @@ bar {
 			focused_workspace  #81aeceff #81aeceff #1d2021ff
 		}
 }
+
+# Resizing containers:
+# mode "resize" {
+# 	bindsym $left  resize shrink width 10px
+# 	bindsym $down  resize grow height 10px
+# 	bindsym $up    resize shrink height 10px
+# 	bindsym $right resize grow width 10px
+# 	bindsym Left   resize shrink width 10px
+# 	bindsym Down   resize grow height 10px
+# 	bindsym Up     resize shrink height 10px
+# 	bindsym Right  resize grow width 10px
+# 	bindsym Return mode "default"
+# 	bindsym Escape mode "default"
+# }
+# bindsym $mod+Shift+r mode "resize"
 

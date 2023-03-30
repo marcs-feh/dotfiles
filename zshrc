@@ -70,7 +70,6 @@ bindkey -M menuselect 'k' vi-up-line-or-history
 bindkey -M menuselect 'l' vi-forward-char
 bindkey -M menuselect 'j' vi-down-line-or-history
 
-
 # OSC-7 working dir support 
 function osc7 {
 	local LC_ALL=C

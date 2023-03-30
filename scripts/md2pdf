@@ -1,0 +1,18 @@
+#!/bin/sh
+
+pdf_name="$(echo $1 | sed -E 's/\.md$/\.pdf/')"
+
+[ "$pdf_name" = "$1" ] \
+	&& pdf_name="$1.pdf"
+
+pandoc "$1" \
+    -V geometry:a4paper \
+    -V geometry:margin=2.5cm \
+    -V indent:true \
+    -V mainfont:"Source Serif Pro" \
+    -V monofont:"Source Code Pro" \
+    -V fontsize=12pt \
+    --pdf-engine=xelatex \
+    -f gfm \
+    -t pdf > "$pdf_name"
+
