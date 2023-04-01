@@ -15,12 +15,12 @@ set $menu fuzzel
 bindsym $mod+q kill
 
 # Start programs
-bindsym --no-repeat $mod+Return exec $term
-bindsym --no-repeat $mod+p exec $menu
-bindsym --no-repeat $mod+Shift+p exec bemenu-run
-bindsym --no-repeat $mod+b exec $web_browser
-bindsym --no-repeat $mod+Shift+t exec $term -e htop
-bindsym --no-repeat $mod+v exec open_book
+bindsym --no-repeat $mod+Return    exec $term
+bindsym --no-repeat $mod+p         exec $menu
+bindsym --no-repeat $mod+Shift+p   exec bemenu-run
+bindsym --no-repeat $mod+b         exec $web_browser
+bindsym --no-repeat $mod+Shift+t   exec $term -e htop
+bindsym --no-repeat $mod+v         exec open_book
 bindsym --no-repeat $mod+Shift+Tab exec switchkb-sway
 
 # Volume control
@@ -29,10 +29,11 @@ bindsym XF86AudioLowerVolume exec 'volume dwn'
 bindsym XF86AudioMute        exec 'volume mute'
 
 # Brightness control
-bindsym XF86MonBrightnessUp exec 'doas brightness inc 0.05'
+bindsym XF86MonBrightnessUp   exec 'doas brightness inc 0.05'
 bindsym XF86MonBrightnessDown exec 'doas brightness dec 0.05'
 
-exec swaybg -i ~/pics/leaves_dark.jpg
+# Wallpaper
+exec swaybg -i ~/pics/mountain_wp.png
 
 input "10248:257:MSFT0001:01_2808:0101_Touchpad" {
 	dwt enabled
@@ -45,7 +46,6 @@ input "type:keyboard" {
 	xkb_layout us,br
 	xkb_options caps:swapescape
 }
-
 
 # Idle configuration
 exec swayidle -w \
@@ -144,7 +144,7 @@ bindsym $mod+Shift+e split none
 bindsym $mod+Shift+f fullscreen
 
 # Toggle the current focus between tiling and floating mode
-bindsym $mod+Shift+space floating toggle
+bindsym $mod+Shift+v floating toggle
 
 # Swap focus between the tiling area and the floating area
 bindsym $mod+space focus mode_toggle
@@ -157,7 +157,7 @@ bindsym $mod+s focus child
 bindsym Mod1+Tab focus next
 bindsym Mod1+Shift+Tab focus next
 
-# Resizing without a dedicated mode.
+# Resizing without a dedicaswaya ted mode.
 set $resize_amount 30px
 bindsym $mod+Ctrl+$left  resize shrink width  $resize_amount
 bindsym $mod+Ctrl+$down  resize grow height   30px
@@ -176,6 +176,8 @@ bindsym $mod+Shift+minus move scratchpad
 # Show the next scratchpad window or hide the focused scratchpad window.
 # If there are multiple scratchpad windows, this command cycles through them.
 bindsym $mod+minus scratchpad show
+
+bindsym --whole-window $mod+BTN_MIDDLE floating toggle
 
 # Appearance
 # Element               Border     Bg         Text       Indicator  Child Border

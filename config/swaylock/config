@@ -1,4 +1,5 @@
 ignore-empty-password
+hide-keyboard-layout
 disable-caps-lock-text
 image=~/pics/leaves_dark.jpg
 scaling=stretch
