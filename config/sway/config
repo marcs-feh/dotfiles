@@ -1,5 +1,4 @@
 ### Variables
-#
 # Logo key. Use Mod1 for Alt.
 set $mod Mod4
 # Home row direction keys, like vim
@@ -8,7 +7,7 @@ set $down  j
 set $up    k
 set $right l
 
-set $web_browser brave-browser
+set $web_browser brave
 set $term alacritty
 set $menu fuzzel
 
@@ -33,7 +32,7 @@ bindsym XF86MonBrightnessUp   exec 'doas brightness inc 0.05'
 bindsym XF86MonBrightnessDown exec 'doas brightness dec 0.05'
 
 # Wallpaper
-exec swaybg -i ~/pics/mountain_wp.png
+exec swaybg -i pics/leaves_dark.jpg
 
 input "10248:257:MSFT0001:01_2808:0101_Touchpad" {
 	dwt enabled
@@ -202,18 +201,6 @@ bar {
 		}
 }
 
-# Resizing containers:
-# mode "resize" {
-# 	bindsym $left  resize shrink width 10px
-# 	bindsym $down  resize grow height 10px
-# 	bindsym $up    resize shrink height 10px
-# 	bindsym $right resize grow width 10px
-# 	bindsym Left   resize shrink width 10px
-# 	bindsym Down   resize grow height 10px
-# 	bindsym Up     resize shrink height 10px
-# 	bindsym Right  resize grow width 10px
-# 	bindsym Return mode "default"
-# 	bindsym Escape mode "default"
-# }
-# bindsym $mod+Shift+r mode "resize"
+# Screen sharing doesnt work without this stupid shit.
+exec sh -c "$HOME/.config/sway/wlr-screensharing-bs.sh"
 
