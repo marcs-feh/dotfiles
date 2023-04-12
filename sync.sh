@@ -12,5 +12,5 @@ cd ..
 
 rsync -rv "$HOME/.profile" profile
 rsync -rv "$HOME/.zshrc" zshrc
-
+rsync -rv "$HOME/.xinitrc" xinitrc
 
