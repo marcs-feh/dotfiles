@@ -13,13 +13,12 @@ zmodload zsh/complist
 # Define pretty prompt
 PS1="┌┄ %F{green}%m%f • %~"$'\n'"╰> "
 
+
 # Check if running in a tty, in that case use only ASCII chars
 [ -z "$(tty | grep -E 'pts')" ] && PS1="%~ $ "
 
 # Use vi mode
 set -o vi
-
-swallow=$()
 
 # General aliases
 alias 'ls'='ls --color'
@@ -84,3 +83,5 @@ function osc7 {
 autoload -Uz add-zsh-hook
 add-zsh-hook -Uz chpwd osc7
 
+# Just for Foot terminal
+tput clear

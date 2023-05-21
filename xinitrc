@@ -13,7 +13,7 @@ test -f "$usermodmap"	&& xmodmap	 "$usermodmap"
 
 # Start some nice programs
 eval $(ssh-agent)
-test $(which xsetroot)  && xsetroot -solid "#303030" &
+test $(which xsetroot)  && xsetroot -solid "#20202c" &
 test $(which gpg-agent) && eval $(gpg-agent --daemon)
 test $(which xbanish)   && xbanish >>$HOME/.local/share/log/xbanish.log &
 
@@ -33,13 +33,20 @@ export XDG_DESKTOP_DIR="$HOME/.desktop"
 # WM startup functions
 
 # dwm
-dwm_init() {
+dwmInit() {
 	wmname LG3D &  # This is for certain java apps
-	dwm_statusbar &
+	dwmblocks &
 	xss-lock slock &
-	~/.fehbg &
 	xcompmgr &
+	~/.fehbg &
 	exec dwm
+}
+
+icewmInit(){
+	xss-lock slock &
+	xcompmgr &
+	~/.fehbg &
+	exec icewm
 }
 
 # i3
@@ -54,5 +61,6 @@ setxkbmap us -option caps:swapescape &
 xrdb ~/.Xresources &
 xbanish -t 10 -i mod4 &
 { sleep 5 ; SetupTouchpad; } &
-dwm_init
+dwmInit
+# icewmInit
 

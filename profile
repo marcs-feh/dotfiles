@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 
 # Basic prompt
 PS1="$ "
@@ -34,23 +34,27 @@ export LS_COLORS='rs=0:di=01;34:ln=01;36:mh=00:pi=40;33:so=01;35:do=01;35:bd=40;
 export DEBUGINFOD_URLS=$(cat /etc/debuginfod/archlinux.urls)
 
 # ash requires ENV to be exported
-[ "$SHELL" = "/bin/ash" ] && export ENV="$HOME/.ashrc"
+[ "$0" = "ash" ] \
+	&& export ENV="$HOME/.ashrc" \
+	&& source "$ENV"
+
 
 # Ask user wheather or not to start GUI
-# tput clear
-printf "== \033[0;32m$(date +'%b %d(%a) %H:%M')\033[0m ==\n"
-printf "Welcome back, \033[0;36m$USER\033[0;m\n"
-printf 'Start GUI?\n'
-printf '\t\033[0;36mX\033[0m11 (default)\n'
-printf '\t\033[0;36mW\033[0mayland\n'
-printf '\t\033[0;36mN\033[0mo\n'
-read gui_type
+[ -z "$TMUX" ] && {
+	printf "== \033[0;32m$(date +'%b %d(%a) %H:%M')\033[0m ==\n"
+	printf "Welcome back, \033[0;36m$USER\033[0;m\n"
+	printf 'Start GUI?\n'
+	printf '\t\033[0;36mX\033[0m11 (default)\n'
+	printf '\t\033[0;36mW\033[0mayland\n'
+	printf '\t\033[0;36mN\033[0mo\n'
+	read gui_type
 
-case "$gui_type" in
-	'X'|'x') startx ;;
-	'W'|'w') dwl -s somebar ;;
-	'N'|'n') echo 'No GUI';;
-esac
+	case "$gui_type" in
+		'X'|'x') startx ;;
+		'W'|'w') Hyprland ;;
+		'N'|'n') echo 'No GUI';;
+	esac
 
-[ -z "$gui_type" ] && startx
+	[ -z "$gui_type" ] && startx
+}
 
