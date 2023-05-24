@@ -1,12 +1,12 @@
 cd config
 for dir in * ; do
-	rsync -rv "$HOME/.config/$dir" .
+	rsync -rv "$HOME/.config/$dir" . &
 done
 cd ..
 
 cd scripts
 for s in * ; do
-	rsync -rv "$HOME/.scripts/$s" .
+	rsync -rv "$HOME/.scripts/$s" . &
 done
 cd ..
 
