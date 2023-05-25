@@ -44,8 +44,8 @@ export DEBUGINFOD_URLS=$(cat /etc/debuginfod/archlinux.urls)
 	printf "== \033[0;32m$(date +'%b %d(%a) %H:%M')\033[0m ==\n"
 	printf "Welcome back, \033[0;36m$USER\033[0;m\n"
 	printf 'Start GUI?\n'
-	printf '\t\033[0;36mX\033[0m11 (default)\n'
-	printf '\t\033[0;36mW\033[0mayland\n'
+	printf '\t\033[0;36mX\033[0m11\n'
+	printf '\t\033[0;36mW\033[0mayland (default)\n'
 	printf '\t\033[0;36mN\033[0mo\n'
 	read gui_type
 
@@ -55,6 +55,6 @@ export DEBUGINFOD_URLS=$(cat /etc/debuginfod/archlinux.urls)
 		'N'|'n') echo 'No GUI';;
 	esac
 
-	[ -z "$gui_type" ] && startx
+	[ -z "$gui_type" ] && Hyprland
 }
 
