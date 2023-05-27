@@ -1,0 +1,78 @@
+* {
+	font-family: 'Source Code Pro', monospace;
+	font-size: 12px;
+}
+
+window#waybar {
+	padding: 2px;
+	margin: 0;
+	color: #f4e5bf;
+	background-color: #1d2021;
+}
+
+#window {
+	margin: 0;
+	padding: 0;
+}
+
+button {
+	border: none;
+	border-radius: 0;
+}
+button:hover {
+	background: inherit;
+}
+
+#workspaces{
+	margin-top: -4px;
+	margin-bottom: -4px;
+	padding:0;
+} 
+
+#workspaces button {
+	background-color: transparent;
+}
+
+#workspaces button.active {
+	color: #8ac87d;
+	background-color: #303536;
+}
+
+#workspaces button.urgent {
+	background-color: #eb4d4b;
+}
+
+#clock,
+#battery,
+#cpu,
+#memory,
+#disk,
+#temperature,
+#backlight,
+#network,
+#pulseaudio,
+#wireplumber,
+#custom-media,
+#tray,
+#mode,
+#idle_inhibitor,
+#scratchpad,
+#mpd {
+	padding: 4px 6px 2px 6px;
+	margin-left: 5px;
+	color: #f4e5bf;
+}
+
+#tray > .needs-attention {
+	-gtk-icon-effect: highlight;
+	background-color: #eb4d4b;
+}
+
+#battery.charging {
+	color: #cda2e3;
+}
+
+#language {
+	min-width: 16px;
+}
+

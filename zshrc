@@ -13,7 +13,6 @@ zmodload zsh/complist
 # Define pretty prompt
 PS1="┌┄ %F{green}%m%f • %~"$'\n'"╰> "
 
-
 # Check if running in a tty, in that case use only ASCII chars
 [ -z "$(tty | grep -E 'pts')" ] && PS1="%~ $ "
 
@@ -28,11 +27,11 @@ alias 'lla'='ls --color -lAh'
 alias 'p'='doas pacman'
 alias 'bat'='bat -p --pager=none'
 alias 'v'='nvim'
-alias 'em'="devour emacs"
-alias 'wb'="devour $WEB_BROWSER"
-alias 'img'="devour $IMAGE_VIEWER"
-alias 'vid'="devour $VIDEO_PLAYER"
-alias 'pdf'="devour $DOC_VIEWER"
+alias 'em'="emacs"
+alias 'wb'="$WEB_BROWSER"
+alias 'img'="$IMAGE_VIEWER"
+alias 'vid'="$VIDEO_PLAYER"
+alias 'pdf'="$DOC_VIEWER"
 
 # Dir aliases
 alias 'mu'='cd ~/music'

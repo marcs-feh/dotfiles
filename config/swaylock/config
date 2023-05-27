@@ -1,7 +1,7 @@
 ignore-empty-password
 hide-keyboard-layout
 disable-caps-lock-text
-image=~/pics/leaves_dark.jpg
+image=~/pics/leaves_dark.png
 scaling=stretch
 
 indicator-radius=260

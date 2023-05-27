@@ -8,3 +8,4 @@ set recolor-darkcolor "#000000"
 set recolor-lightcolor "#E3D8B8"
 
 set first-page-column 1:1
+set window-title-basename true
