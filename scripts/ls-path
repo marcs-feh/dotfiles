@@ -14,3 +14,4 @@ for dir in paths:
 execs.sort()
 for ex in execs:
   print(ex)
+

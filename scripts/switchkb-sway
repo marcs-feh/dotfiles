@@ -2,7 +2,8 @@
 
 # Wayland is notoriously retarded with keyboard layouts, leaving
 # everything for the compositor to handle. This only works for Sway
-input_devs='1:1:AT_Translated_Set_2_keyboard'
+
+input_devs='12815:20508:SONiX_USB_Keyboard_System_Control'
 
 Run() { echo "$@"; $@; }
 
