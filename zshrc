@@ -11,7 +11,7 @@ zstyle ':completion:*' menu select
 zmodload zsh/complist
 
 # Define pretty prompt
-PS1="┌┄ %F{green}%m%f • %~"$'\n'"╰> "
+PS1="┌┄ %F{cyan}%m%f • %~"$'\n'"╰> "
 
 # Check if running in a tty, in that case use only ASCII chars
 [ -z "$(tty | grep -E 'pts')" ] && PS1="%~ $ "

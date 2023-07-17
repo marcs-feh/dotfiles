@@ -8,7 +8,6 @@ export PATH="$PATH:$HOME/.scripts/:$HOME/.local/bin/:$HOME/.cargo/bin/"
 export GOPATH="$HOME/.local/share/go/"
 
 export XDG_CURRENT_DESKTOP='sway' # Soy-powered apps sometimes require this.
-export XDG_DATA_DIRS="$HOME/.local/share/flatpak/exports/share:$XDG_DATA_DIRS"
 
 # Apps
 export VISUAL='nvim'

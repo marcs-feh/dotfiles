@@ -19,6 +19,7 @@ button {
 	border: none;
 	border-radius: 0;
 }
+
 button:hover {
 	background: inherit;
 }
@@ -30,12 +31,14 @@ button:hover {
 } 
 
 #workspaces button {
+	color: #f4e5bf;
 	background-color: transparent;
 }
 
 #workspaces button.active {
 	color: #8ac87d;
 	background-color: #303536;
+	font-weight: bold;
 }
 
 #workspaces button.urgent {
