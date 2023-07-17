@@ -1,6 +1,6 @@
 {
 	"layer": "top", // Waybar at top layer
-	"position": "top", // Waybar position (top|bottom|left|right)
+	"position": "bottom", // Waybar position (top|bottom|left|right)
 	// "height": 22, // Waybar height (to be removed for auto height)
 	// "width": 1280, // Waybar width
 	"spacing": 4, // Gaps between modules (4px)
@@ -28,9 +28,9 @@
 		"spacing": 10
 	},
 	"clock": {
-		"format": "{:%b %d(%a) %H:%M}",
+		"format": "{:%b %d(%a)%H:%M}",
 		"tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>",
-		"format-alt": "{:%Y-%m-%d %H:%M:%S}"
+		"format-alt": "{:%Y-%m-%d\n%H:%M:%S}"
 	},
 	"backlight": {
 		// "device": "acpi_video1",
