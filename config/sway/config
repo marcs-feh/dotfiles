@@ -17,7 +17,6 @@ bindsym $mod+q kill
 bindsym --no-repeat $mod+Return    exec $term
 bindsym --no-repeat $mod+p         exec $menu
 bindsym --no-repeat $mod+Shift+p   exec bemenu-run
-bindsym --no-repeat $mod+Shift+a   exec screenshot
 bindsym --no-repeat $mod+b         exec $web_browser
 bindsym --no-repeat $mod+Shift+t   exec $term -e htop
 bindsym --no-repeat $mod+v         exec open_book
@@ -33,7 +32,7 @@ bindsym XF86MonBrightnessUp   exec 'doas brightness inc 0.05'
 bindsym XF86MonBrightnessDown exec 'doas brightness dec 0.05'
 
 # Wallpaper
-exec swaybg -i ~/pics/mountain_wp.png
+exec swaybg -i pics/leaves_dark.jpg
 
 input "10248:257:MSFT0001:01_2808:0101_Touchpad" {
 	dwt enabled
@@ -181,9 +180,11 @@ bindsym --whole-window $mod+BTN_MIDDLE floating toggle
 
 # Appearance
 # Element               Border     Bg         Text       Indicator  Child Border
-client.focused          #1d2021ff  #303536ff  #c4dc9bff  #c4dc9bc0
-client.unfocused        #1d2021ff  #1d2021ff  #606a6cff  
-client.focused_inactive #1d2021ff  #1d2021ff  #606a6cff
+client.focused          #1d2021ff  #303536ff  #c4dc9bff  #c4dc9bc0  #303536ff
+client.unfocused        #1d2021ff  #1d2021ff  #606a6cff  #c4dc9bc0  #1d2021ff
+client.focused_inactive #1d2021ff  #1d2021ff  #606a6cff  #c4dc9bc0  #1d2021ff
+
+titlebar_border_thickness 0
 
 # Status Bar:
 # Read `man 5 sway-bar` for more information about this section.
@@ -203,7 +204,5 @@ bar {
 }
 
 # Screen sharing doesnt work without this stupid shit.
-# exec systemctl --user import-environment WAYLAND_DISPLAY XDG_CURRENT_DESKTOP
-# exec dbus-update-activation-environment --systemd WAYLAND_DISPLAY XDG_CURRENT_DESKTOP=compositor_name
-exec /usr/lib/xdg-desktop-portal -r & /usr/lib/xdg-desktop-portal-wlr
+exec sh -c "$HOME/.config/sway/wlr-screensharing-bs.sh"
 
