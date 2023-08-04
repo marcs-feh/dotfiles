@@ -28,6 +28,7 @@ alias 'p'='doas pacman'
 alias 'bat'='bat -p --pager=none'
 alias 'v'='nvim'
 alias 'em'="emacs"
+alias 'rs'='rsync -av'
 alias 'wb'="$WEB_BROWSER"
 alias 'img'="$IMAGE_VIEWER"
 alias 'vid'="$VIDEO_PLAYER"

@@ -28,8 +28,8 @@
 		"spacing": 10
 	},
 	"clock": {
-		"format": "{:%b %d(%a)%H:%M}",
-		"tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>",
+		"format": "{:%b %d(%a) %H:%M}",
+		"tooltip-format": "<big>{:%Y %B}</big> <tt><small>{calendar}</small></tt>",
 		"format-alt": "{:%Y-%m-%d\n%H:%M:%S}"
 	},
 	"backlight": {
