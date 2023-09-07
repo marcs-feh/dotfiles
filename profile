@@ -6,6 +6,7 @@ PS1="$ "
 # Path setup
 export PATH="$PATH:$HOME/.scripts/:$HOME/.local/bin/:$HOME/.cargo/bin/"
 export GOPATH="$HOME/.local/share/go/"
+export ODIN_ROOT="$HOME/.local/share/Odin/"
 
 export XDG_CURRENT_DESKTOP='sway' # Soy-powered apps sometimes require this.
 export XDG_DATA_DIRS="$HOME/.local/share/flatpak/exports/share:$XDG_DATA_DIRS"
@@ -14,7 +15,7 @@ export XDG_DATA_DIRS="$HOME/.local/share/flatpak/exports/share:$XDG_DATA_DIRS"
 export VISUAL='nvim'
 export EDITOR='nvim'
 export WEB_BROWSER='firefox'
-export IMAGE_VIEWER='gwenview'
+export IMAGE_VIEWER='nsxiv'
 export VIDEO_PLAYER='mpv'
 export DOC_VIEWER='zathura'
 export CC='clang'
@@ -39,16 +40,19 @@ export DEBUGINFOD_URLS=$(cat /etc/debuginfod/archlinux.urls)
 	&& export ENV="$HOME/.ashrc" \
 	&& source "$ENV"
 
-
 # Ask user wheather or not to start GUI
 [ -z "$TMUX" ] && {
+	defaultGUI='w'
 	printf "== \033[0;32m$(date +'%b %d(%a) %H:%M')\033[0m ==\n"
 	printf "Welcome back, \033[0;36m$USER\033[0;m\n"
 	printf 'Start GUI?\n'
-	printf '\t\033[0;36mX\033[0m11\n'
-	printf '\t\033[0;36mW\033[0mayland (default)\n'
-	printf '\t\033[0;36mN\033[0mo\n'
+	printf '    \033[0;36mX\033[0m11\n'
+	printf '    \033[0;36mW\033[0mayland\n'
+	printf '    \033[0;36mN\033[0mo\n'
+	printf "(default=$defaultGUI) "
 	read gui_type
+
+	[ -z "$gui_type" ] && gui_type="$defaultGUI"
 
 	case "$gui_type" in
 		'X'|'x') startx ;;
@@ -56,6 +60,5 @@ export DEBUGINFOD_URLS=$(cat /etc/debuginfod/archlinux.urls)
 		'N'|'n') echo 'No GUI';;
 	esac
 
-	[ -z "$gui_type" ] && Hyprland
 }
 
