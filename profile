@@ -42,7 +42,7 @@ export DEBUGINFOD_URLS=$(cat /etc/debuginfod/archlinux.urls)
 
 # Ask user wheather or not to start GUI
 [ -z "$TMUX" ] && {
-	defaultGUI='w'
+	defaultGUI='x'
 	printf "== \033[0;32m$(date +'%b %d(%a) %H:%M')\033[0m ==\n"
 	printf "Welcome back, \033[0;36m$USER\033[0;m\n"
 	printf 'Start GUI?\n'

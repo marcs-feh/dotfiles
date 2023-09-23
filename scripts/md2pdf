@@ -12,6 +12,7 @@ pandoc "$1" \
     -V mainfont:"Source Serif Pro" \
     -V monofont:"Source Code Pro" \
     -V fontsize=12pt \
-    -f gfm \
-    -t pdf > "$pdf_name"
+    -f markdown+tex_math_dollars \
+	-f markdown-implicit_figures \
+    -t pdf -o "$pdf_name"
 
