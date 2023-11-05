@@ -1,8 +1,0 @@
-#!/bin/sh
-
-if [ -f ".nvim_session" ]; then
-	nvim -S .nvim_session $@
-else
-	nvim $@
-fi
-

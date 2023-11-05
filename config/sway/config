@@ -8,7 +8,7 @@ set $up    k
 set $right l
 
 set $web_browser brave
-set $term foot
+set $term alacritty
 set $menu fuzzel
 
 bindsym $mod+q kill
@@ -17,6 +17,7 @@ bindsym $mod+q kill
 bindsym --no-repeat $mod+Return    exec $term
 bindsym --no-repeat $mod+p         exec $menu
 bindsym --no-repeat $mod+Shift+p   exec bemenu-run
+bindsym --no-repeat $mod+Shift+a   exec screenshot
 bindsym --no-repeat $mod+b         exec $web_browser
 bindsym --no-repeat $mod+Shift+t   exec $term -e htop
 bindsym --no-repeat $mod+v         exec open_book
@@ -32,7 +33,7 @@ bindsym XF86MonBrightnessUp   exec 'doas brightness inc 0.05'
 bindsym XF86MonBrightnessDown exec 'doas brightness dec 0.05'
 
 # Wallpaper
-exec swaybg -i pics/leaves_dark.png
+exec swaybg -i ~/pics/mountain_wp.png
 
 input "10248:257:MSFT0001:01_2808:0101_Touchpad" {
 	dwt enabled
@@ -178,15 +179,11 @@ bindsym $mod+minus scratchpad show
 
 bindsym --whole-window $mod+BTN_MIDDLE floating toggle
 
-titlebar_border_thickness 0
-default_border pixel
-
 # Appearance
 # Element               Border     Bg         Text       Indicator  Child Border
-client.focused          #1d2021ff  #303536ff  #c4dc9bff  #c4dc9bc0  #303536ff
-client.unfocused        #1d2021ff  #1d2021ff  #606a6cff  #c4dc9bc0  #1d2021ff
-client.focused_inactive #1d2021ff  #1d2021ff  #606a6cff  #c4dc9bc0  #1d2021ff
-
+client.focused          #1d2021ff  #303536ff  #c4dc9bff  #c4dc9bc0
+client.unfocused        #1d2021ff  #1d2021ff  #606a6cff  
+client.focused_inactive #1d2021ff  #1d2021ff  #606a6cff
 
 # Status Bar:
 # Read `man 5 sway-bar` for more information about this section.
@@ -194,7 +191,7 @@ bar {
 	position bottom
 	height 21
 	font Source Code Pro 10
-	status_command i3status
+	status_command i3status-rs
 		colors {
 			statusline #f4e5bfff
 			background #1d2021ff
@@ -206,5 +203,7 @@ bar {
 }
 
 # Screen sharing doesnt work without this stupid shit.
-exec sh -c "$HOME/.config/sway/wlr-screensharing-bs.sh"
+# exec systemctl --user import-environment WAYLAND_DISPLAY XDG_CURRENT_DESKTOP
+# exec dbus-update-activation-environment --systemd WAYLAND_DISPLAY XDG_CURRENT_DESKTOP=compositor_name
+exec /usr/lib/xdg-desktop-portal -r & /usr/lib/xdg-desktop-portal-wlr
 

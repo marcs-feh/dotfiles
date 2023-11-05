@@ -1,7 +1,0 @@
-#!/bin/sh
-
-interface='wlp0s12f0'
-bridge='br0'
-
-ip link set $bridge down
-ip link set $interface nomaster
