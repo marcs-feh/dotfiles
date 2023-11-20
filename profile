@@ -4,7 +4,7 @@
 PS1="$ "
 
 # Path setup
-export PATH="$PATH:$HOME/.scripts/:$HOME/.local/bin/:$HOME/.cargo/bin/"
+export PATH="$PATH:$HOME/.local/bin/:$HOME/.scripts/"
 export GOPATH="$HOME/.local/share/go/"
 export ODIN_ROOT="$HOME/.local/share/Odin/"
 
@@ -14,12 +14,12 @@ export XDG_DATA_DIRS="$HOME/.local/share/flatpak/exports/share:$XDG_DATA_DIRS"
 # Apps
 export VISUAL='nvim'
 export EDITOR='nvim'
-export WEB_BROWSER='firefox'
+export WEB_BROWSER='librewolf'
 export IMAGE_VIEWER='nsxiv'
 export VIDEO_PLAYER='mpv'
 export DOC_VIEWER='zathura'
-export CC='clang'
-export CXX='clang++'
+export CC='cc'
+export CXX='c++'
 
 local hi='#8ac87d' bg='#1d2021' fg='#f4e5bf';
 export BEMENU_OPTS="-i -H 20 --nf '$fg' --nb '$bg' --af '$fg' --ab '$bg' --tf '$bg' --tb '$hi' --sf '$bg' --sb '$fg' --hf '$hi' --hb '$bg' --ff '$fg' --fb '$bg' --fbf '$fg' --fbb '$bg' --scf '$fg' --scb '$bg'"
@@ -40,7 +40,7 @@ export DEBUGINFOD_URLS=$(cat /etc/debuginfod/archlinux.urls)
 	&& export ENV="$HOME/.ashrc" \
 	&& source "$ENV"
 
-# Ask user wheather or not to start GUI
+# Ask user whether or not to start GUI
 [ -z "$TMUX" ] && {
 	defaultGUI='x'
 	printf "== \033[0;32m$(date +'%b %d(%a) %H:%M')\033[0m ==\n"
@@ -59,6 +59,5 @@ export DEBUGINFOD_URLS=$(cat /etc/debuginfod/archlinux.urls)
 		'W'|'w') Hyprland ;;
 		'N'|'n') echo 'No GUI';;
 	esac
-
 }
 

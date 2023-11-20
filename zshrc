@@ -11,7 +11,7 @@ zstyle ':completion:*' menu select
 zmodload zsh/complist
 
 # Define pretty prompt
-PS1="┌┄ %F{cyan}%m%f • %~"$'\n'"╰> "
+PS1="┌┄ %F{green}%m%f • %~"$'\n'"╰> "
 
 # Check if running in a tty, in that case use only ASCII chars
 [ -z "$(tty | grep -E 'pts')" ] && PS1="%~ $ "
@@ -27,8 +27,8 @@ alias 'lla'='ls --color -lAh'
 alias 'p'='doas pacman'
 alias 'bat'='bat -p --pager=none'
 alias 'v'='nvim'
-alias 'rs'='rsync -av'
 alias 'em'="emacs"
+alias 'rs'='rsync -av'
 alias 'wb'="$WEB_BROWSER"
 alias 'img'="$IMAGE_VIEWER"
 alias 'vid'="$VIDEO_PLAYER"
