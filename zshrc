@@ -1,3 +1,7 @@
+[ -z "$PROFILE_SOURCED" ] \
+	&& source "$HOME/.profile" \
+	&& echo 'Sourcing profile'
+
 # History
 export HISTSIZE=500
 export SAVEHIST=500
@@ -24,7 +28,7 @@ alias 'ls'='ls --color'
 alias 'la'='ls --color -A'
 alias 'll'='ls --color -lh'
 alias 'lla'='ls --color -lAh'
-alias 'p'='doas pacman'
+alias 'zp'='doas zypper'
 alias 'bat'='bat -p --pager=none'
 alias 'v'='nvim'
 alias 'em'="emacs"
