@@ -1,0 +1,69 @@
+live_config_reload = true
+
+[colors]
+draw_bold_text_with_bright_colors = false
+
+[colors.bright]
+black   = "#303536"
+blue    = "#81aece"
+cyan    = "#7ec9b1"
+green   = "#8ac87d"
+magenta = "#cda2e3"
+red     = "#d83e33"
+white   = "#fcf8ee"
+yellow  = "#f2ba41"
+
+[colors.normal]
+black   = "#303536"
+blue    = "#81aece"
+cyan    = "#7ec9b1"
+green   = "#8ac87d"
+magenta = "#cda2e3"
+red     = "#d83e33"
+white   = "#fcf8ee"
+yellow  = "#f2ba41"
+
+[colors.primary]
+background = "#1e1e1e"
+foreground = "#f4e5bf"
+
+[cursor]
+thickness = 0.15
+unfocused_hollow = true
+
+[cursor.style]
+blinking = "Off"
+shape = "Block"
+
+[env]
+TERM = "xterm-256color"
+
+[font]
+builtin_box_drawing = false
+size = 13
+
+[font.normal]
+family = "JetBrains Mono NL Light"
+
+[[keyboard.bindings]]
+action = "SpawnNewInstance"
+key    = "N"
+mods   = "Shift|Control"
+
+[scrolling]
+history = 4000
+
+[window]
+dynamic_padding = true
+dynamic_title = false
+opacity = 1.0
+title = "Terminal"
+
+[window.dimensions]
+columns = 80
+lines = 30
+
+[window.padding]
+x = 2
+y = 2
+
