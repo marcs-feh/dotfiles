@@ -62,5 +62,4 @@ xrdb ~/.Xresources &
 xbanish -t 10 -i mod4 &
 { sleep 5 ; SetupTouchpad; } &
 dwmInit
-# icewmInit
 

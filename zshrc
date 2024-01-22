@@ -18,7 +18,7 @@ zmodload zsh/complist
 PS1="┌┄ %F{green}%m%f • %~"$'\n'"╰> "
 
 # Check if running in a tty, in that case use only ASCII chars
-[ -z "$(tty | grep -E 'pts')" ] && PS1="%~ $ "
+[ -z "$(tty | grep -E 'pts')" ] && PS1="[%m] %~"$'\n'"-> "
 
 # Use vi mode
 set -o vi
@@ -28,13 +28,12 @@ alias 'ls'='ls --color'
 alias 'la'='ls --color -A'
 alias 'll'='ls --color -lh'
 alias 'lla'='ls --color -lAh'
-alias 'zp'='doas zypper'
-alias 'bat'='bat -p --pager=none'
+alias 'p'='doas pacman'
 alias 'v'='nvim'
 alias 'em'="emacs"
 alias 'rs'='rsync -av'
 alias 'wb'="$WEB_BROWSER"
-alias 'img'="$IMAGE_VIEWER"
+# alias 'img'="$IMAGE_VIEWER"
 alias 'vid'="$VIDEO_PLAYER"
 alias 'pdf'="$DOC_VIEWER"
 
@@ -51,7 +50,7 @@ alias 'bk'='cd ~/books'
 
 # Git aliases
 alias 'gs'='git status'
-alias 'ga'='git add'
+alias 'ga'='git add --all'
 alias 'gc'='git checkout'
 alias 'gD'='git diff --cached'
 alias 'gC'='git commit'
@@ -89,3 +88,4 @@ add-zsh-hook -Uz chpwd osc7
 
 # Just for Foot terminal
 tput clear
+
